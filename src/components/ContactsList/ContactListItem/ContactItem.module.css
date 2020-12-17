@@ -1,0 +1,33 @@
+.item {
+  display: flex;
+  align-items: center;
+  width: 445px;
+  margin: 0 auto;
+  margin-top: 5px;
+  padding: 5px;
+  
+  background-color: #ffffff;
+  border: 2px solid #857272;
+  box-shadow: 0px 9px 15px 5px #4b4747;
+}
+.itemText {
+  width: 150px;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.btn {
+  width: 50px;
+
+  color: #ffffff;
+  background-color: #f73d30;
+  border: none;
+
+  border-radius: 2px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #b42f2f;
+  color: #ffffff;
+}

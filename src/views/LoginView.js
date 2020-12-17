@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { authOperations } from '../redux/auth';
+import { authOperations, authSelectors  } from '../redux/auth';
+import Notification from '../shared/Notify/Notification';
 
 const styles = {
   form: {
@@ -35,6 +36,10 @@ class LoginView extends Component {
 
     return (
       <div>
+         <Notification
+            error={Boolean(this.props.error)}
+            message="There is no such account!"
+          ></Notification>
         <h1>Login page</h1>
 
         <form onSubmit={this.handleSubmit} style={styles.form}>
@@ -65,4 +70,8 @@ class LoginView extends Component {
   }
 }
 
-export default connect(null, { onLogin: authOperations.logIn })(LoginView);
+const mapStateToProps = state => ({
+  error: authSelectors.getErrorMessage(state),
+});
+
+export default connect(mapStateToProps, { onLogin: authOperations.logIn })(LoginView);

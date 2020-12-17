@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { authOperations } from '../redux/auth';
+import { authOperations, authSelectors } from '../redux/auth';
+import Notification from '../shared/Notify/Notification';
+
 
 const styles = {
   form: {
@@ -36,6 +38,12 @@ class RegisterView extends Component {
 
     return (
       <div>
+{typeof this.props.error === 'string' && (
+            <Notification
+              error={Boolean(this.props.error)}
+              message="something went wrong"
+            ></Notification>
+          )}
         <h1>Register page</h1>
 
         <form onSubmit={this.handleSubmit} style={styles.form}>
@@ -76,6 +84,10 @@ class RegisterView extends Component {
   }
 }
 
-export default connect(null, { onRegister: authOperations.register })(
-  RegisterView,
+const mapStateToProps = state => ({
+  error: authSelectors.getErrorMessage(state),
+});
+
+export default connect(mapStateToProps, { onRegister: authOperations.register })(
+  (RegisterView),
 );

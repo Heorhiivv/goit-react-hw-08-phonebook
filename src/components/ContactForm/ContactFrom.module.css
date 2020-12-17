@@ -1,0 +1,40 @@
+.PhoneBookForm {
+  flex-direction: column;
+  display: flex;
+  margin: 0 auto;
+
+  width: 400px;
+  padding: 25px;
+
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  box-shadow: 0px 5px 10px 5px #000000;
+}
+.input {
+  display: block;
+  width: 300px;
+  height: 30px;
+  margin-bottom: 15px;
+}
+.input:focus {
+  border:  #6d7ccf;
+}
+.label {
+  margin-left: 45px;
+}
+.inputBtn {
+  width: 310px;
+  margin-left: 45px;
+  height: 30px;
+  border: 5px;
+  
+  color: #ffffff;
+  background-color: #6d7ccf;
+  cursor: pointer;
+}
+
+.inputBtn:hover,
+.inputBtn:focus {
+  background-color: #293a9b;
+  color: #ffffff;
+}

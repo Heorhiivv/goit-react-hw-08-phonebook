@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { authSelectors, authOperations } from '../redux/auth';
+import { authSelectors, authOperations } from '../../redux/auth';
 
 const styles = {
   container: {
@@ -13,9 +13,9 @@ const styles = {
   },
 };
 
-const UserMenu = ({ email, onLogout }) => (
+const UserMenu = ({email, onLogout }) => (
   <div style={styles.container}>
-    <span style={styles.email}>{email}</span>
+    <span style={styles.email}>Welcome, {email}</span>
     <button type="button" onClick={onLogout}>
       Logout
     </button>
@@ -23,9 +23,11 @@ const UserMenu = ({ email, onLogout }) => (
 );
 
 const mapStateToProps = state => ({
+  isAuthenticated: authSelectors.isAuthenticated(state),
   email: authSelectors.getUserMail(state),
 });
 
-export default connect(mapStateToProps, { onLogout: authOperations.logOut })(
-  UserMenu,
-);
+const mapDispatchToProps = {
+  onLogout: authOperations.logOut,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

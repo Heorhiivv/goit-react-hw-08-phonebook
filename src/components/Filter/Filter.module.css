@@ -1,0 +1,38 @@
+.filter{
+  flex-direction: column;
+  display: flex;
+  margin: 15px auto;
+
+  width: 400px;
+  padding: 25px;
+
+  background-color: #ffffff;
+  border: 2px solid #857272;
+  box-shadow: 0px 9px 10px 5px #4b4747;
+}
+.input {
+  display: block;
+  width: 300px;
+  height: 30PX;
+  margin-top: 10px;
+}
+.input:focus {
+  border:  #6d7ccf;
+}
+.label {
+  margin-left: 45px;
+}
+.enter {
+  transform: scale(0.1);
+}
+.enterActive {
+  transform: scale(1);
+  transition: all 250ms linear;
+}
+.exit {
+  transform: scale(1);
+}
+.exitActive {
+  transform: scale(0.1);
+  transition: all 250ms linear;
+}

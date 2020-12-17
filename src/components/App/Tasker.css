@@ -1,0 +1,22 @@
+body {
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  background-color: lightblue;
+}
+.title {
+  text-align: center;
+  margin-left: -300px;
+  color: rgb(73, 73, 131);
+}
+.Logo-slideIn-appear {
+  transform: translateX(-100%);
+}
+.Logo-slideIn-appear-active {
+  transform: translateX(0);
+  transition: transform 500ms linear;
+}

@@ -1,0 +1,19 @@
+.list {
+  margin-bottom: 50px;
+  list-style: square;
+  padding-left: 10px;
+}
+.enter {
+  transform: translateX(-100%);
+  transition: all 250ms linear;
+}
+.enterActive {
+  transform: translateX(0);
+}
+.exit {
+  transform: translateX(0);
+  transition: all 250ms linear;
+}
+.exitActive {
+  transform: translateX(-100%);
+}
