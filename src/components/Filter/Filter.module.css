@@ -4,7 +4,7 @@
   margin: 15px auto;
 
   width: 400px;
-  padding: 25px;
+  min-height: 80px;
 
   background-color: #ffffff;
   border: 2px solid #857272;
@@ -20,7 +20,7 @@
   border:  #6d7ccf;
 }
 .label {
-  margin-left: 45px;
+  margin: 15px auto;
 }
 .enter {
   transform: scale(0.1);

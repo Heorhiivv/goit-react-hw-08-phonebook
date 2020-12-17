@@ -1,4 +1,4 @@
-  const isAuthenticated = state => state.auth.token;
+const isAuthenticated = state => state.auth.token;
 const getUserMail = state => state.auth.user.email;
 const getErrorMessage = state => state.auth.error;
 

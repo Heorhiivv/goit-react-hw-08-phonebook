@@ -4,7 +4,7 @@ import ContactForm from  '../components/ContactForm/ContactForm'
 import Filter from "../components/Filter/Filter"
 import ContactsList from "../components/ContactsList/ContactsList"
 import Spinner from '../shared/Spinner/Spinner';
-import "../components/App/Tasker.css"
+import "../components/ContactsList/Contacts.css"
 
 import {connect} from "react-redux"
 import contactsSelectors from '../redux/contacts/contacts-selectors';
@@ -18,9 +18,9 @@ class TaskerView extends Component {
   render() {
     return (
       <>
+       {this.props.isLoadingTasks && <Spinner />}
         <Title />
         <ContactForm />
-         {this.props.isLoadingTasks && <Spinner />}
         <Filter />
         <ContactsList />
       </>

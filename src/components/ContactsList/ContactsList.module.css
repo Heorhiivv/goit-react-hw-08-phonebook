@@ -1,7 +1,6 @@
 .list {
   margin-bottom: 50px;
   list-style: square;
-  padding-left: 10px;
 }
 .enter {
   transform: translateX(-100%);

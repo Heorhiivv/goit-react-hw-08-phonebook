@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Layout from '../Layout/Layout';
 import routes from '../../routes';
 import { authOperations } from '../../redux/auth';
-
+import Spinner from '../../shared/Spinner/Spinner';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicRoute from '../PublicRoute/PublicRoute';
 
@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Layout>
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<Spinner />}>
           <Switch>
             {routes.map(route => {
               return route.private ? (
@@ -25,16 +25,11 @@ class App extends Component {
                 <PublicRoute
                   key={route.label}
                   {...route}
-                  // restricted={route.restricted}
+                  restricted={route.restricted}
                 />
               )
             })}
           </Switch>
-            {/* <Switch>
-              {routes.map(route => (
-                <Route key={route.path} {...route} />
-              ))}
-            </Switch> */}
           </Suspense>
         </Layout>
       </BrowserRouter>
