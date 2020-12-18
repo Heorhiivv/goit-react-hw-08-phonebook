@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import {connect} from "react-redux"
 import {authOperations, authSelectors} from "../redux/auth"
 import Notification from "../shared/Notify/Notification"
-import  authActions from '../redux/auth/authActions';
+import authActions from '../redux/auth/authActions';
 
 const styles = {
   form: {

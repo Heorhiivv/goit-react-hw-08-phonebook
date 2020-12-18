@@ -1,7 +1,8 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
 import {authOperations, authSelectors} from "../redux/auth"
-// import Notification from "../shared/Notify/Notification"
+import Notification from "../shared/Notify/Notification"
+import authActions from '../redux/auth/authActions';
 
 const styles = {
   form: {
@@ -32,11 +33,13 @@ class RegisterView extends Component {
   }
 
   render() {
-    const {name, email, password} = this.state
-
+    const {name, email, password} = this.state;
+    if (this.props.error) {
+      setTimeout(() => { this.props.getErrorNull() }, 3000)
+    }
     return (
       <div>
-          {/* <Notification error={Boolean(this.props.error)} message="Something went wrong!"></Notification> */}
+          <Notification error={Boolean(this.props.error)} message="Choose, please another Email!"></Notification>
         <h1>Register page</h1>
 
         <form onSubmit={this.handleSubmit} style={styles.form}>
@@ -66,4 +69,5 @@ const mapStateToProps = (state) => ({
   error: authSelectors.getErrorMessage(state),
 })
 
-export default connect(mapStateToProps, {onRegister: authOperations.register})(RegisterView)
+const mapDispatchToProps = {getErrorNull: authActions.getErrorNull, onRegister: authOperations.register } 
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterView)
