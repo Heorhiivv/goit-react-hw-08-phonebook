@@ -36,9 +36,7 @@ class RegisterView extends Component {
 
     return (
       <div>
-        {/* {typeof this.props.error === "string" && (
-          <Notification error={Boolean(this.props.error)} message="Something went wrong!"></Notification>
-        )} */}
+          {/* <Notification error={Boolean(this.props.error)} message="Something went wrong!"></Notification> */}
         <h1>Register page</h1>
 
         <form onSubmit={this.handleSubmit} style={styles.form}>

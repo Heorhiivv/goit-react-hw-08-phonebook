@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import PropTypes from "prop-types"
 import Notification from "../../shared/Notify/Notification"
 import css from "../ContactForm/ContactFrom.module.css"
+import authActions from '../../redux/auth/authActions';
 
 import {connect} from "react-redux"
 import contactsOperations from "../../redux/contacts/contactsOperations"
@@ -11,11 +12,9 @@ class ContactForm extends Component {
   static propTypes = {
     onAddContact: PropTypes.func.isRequired,
   }
-
   state = {
     name: "",
     number: "",
-    isContacts: false,
   }
 
   handleChange = ({target}) => {
@@ -26,15 +25,16 @@ class ContactForm extends Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    const { getErrorToggle } = this.props
     const task = {
       name: this.state.name,
       number: this.state.number,
     }
 
     if (this.props.contacts.find(({name}) => name === task.name)) {
-      this.setState({isContacts: true})
-      setTimeout(() => this.setState({isContacts: false}), 4000)
+    getErrorToggle()
+      setTimeout(() => getErrorToggle(), 3000)
       return
     }
 
@@ -46,10 +46,10 @@ class ContactForm extends Component {
   }
 
   render() {
-    const {name, number, isContacts} = this.state
+    const {name, number} = this.state
     return (
       <>
-        <Notification isContacts={isContacts} />
+        <Notification error={this.props.error} message= "contact is exist!"/>
         <form className={css.PhoneBookForm} onSubmit={this.handleSubmit}>
           <label className={css.label}>
             Name
@@ -77,10 +77,12 @@ class ContactForm extends Component {
 
 const mapStateToProps = (state) => ({
   contacts: contactsSelectors.getContacts(state),
+  error: state.auth.error
 })
 
 const mapDispatchToProps = {
   onAddContact: contactsOperations.onAddContact,
+  getErrorToggle: authActions.getErrorToggle,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)

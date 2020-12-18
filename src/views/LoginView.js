@@ -1,7 +1,8 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
 import {authOperations, authSelectors} from "../redux/auth"
-// import Notification from "../shared/Notify/Notification"
+import Notification from "../shared/Notify/Notification"
+import  authActions from '../redux/auth/authActions';
 
 const styles = {
   form: {
@@ -32,10 +33,12 @@ class LoginView extends Component {
 
   render() {
     const {email, password} = this.state
-
+    if (this.props.error) {
+      setTimeout(() => { this.props.getErrorNull() }, 3000)
+    }
     return (
       <div>
-          {/* <Notification error={Boolean(this.props.error)} message="There is no such account!"></Notification> */}
+          <Notification error={Boolean(this.props.error)} message="There is no such account!"></Notification>
         <h1>Login page</h1>
 
         <form onSubmit={this.handleSubmit} style={styles.form}>
@@ -59,5 +62,6 @@ class LoginView extends Component {
 const mapStateToProps = (state) => ({
   error: authSelectors.getErrorMessage(state),
 })
+const mapDispatchToProps = {getErrorNull: authActions.getErrorNull, onLogin: authOperations.logIn } 
 
-export default connect(mapStateToProps, {onLogin: authOperations.logIn})(LoginView)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginView)
